@@ -45,6 +45,7 @@ use Cake\Error\ErrorHandler;
 use Cake\Log\Log;
 use Cake\Network\Email\Email;
 use Cake\Network\Request;
+use Cake\Routing\DispatcherFactory;
 use Cake\Utility\Inflector;
 
 /**
@@ -148,3 +149,21 @@ Request::addDetector('tablet', function($request) {
  * Plugin::load('DebugKit'); //Loads a single plugin named DebugKit
  *
  */
+Plugin::load('Photos');
+
+/**
+ * Attach middleware to your application's dispatch cycle.
+ *
+ * Middleware lets you handle events fired during the dispatch cycle, and
+ * let you create responses, or augment the request or response objects.
+ *
+ * - AssetDispatcher filter will serve your asset files (css, images, js, etc)
+ *   from your themes and plugins
+ * - CacheDispatcher filter will read the Cache.check configure variable and try
+ *   to serve cached content generated from controllers
+ *
+ * Feel free to remove or add filters as you see fit for your application. A few examples:
+ */
+use Cake\Routing\RoutingMiddleware;
+
+DispatcherFactory::add(new RoutingMiddleware());
