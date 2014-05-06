@@ -165,5 +165,7 @@ Plugin::load('Photos');
  * Feel free to remove or add filters as you see fit for your application. A few examples:
  */
 use Cake\Routing\RoutingMiddleware;
+use Cake\Routing\ControllerMiddleware;
 
 DispatcherFactory::add(new RoutingMiddleware());
+DispatcherFactory::add(new ControllerMiddleware());
